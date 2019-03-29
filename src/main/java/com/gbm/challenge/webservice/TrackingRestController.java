@@ -18,6 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class TrackingRestController {
 
     /**
+     * Endpoint to root directory.
+     *
+     * @return HTTP status of the request and greetings.
+     */
+    @GetMapping("/")
+    public ResponseEntity root() {
+        log.debug("root() {}");
+        return new ResponseEntity("Taxi tracking application", HttpStatus.OK);
+    }
+
+    /**
      * Endpoint to update some position.
      *
      * @return HTTP status of the request.
