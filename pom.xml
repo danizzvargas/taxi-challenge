@@ -6,7 +6,7 @@
     <artifactId>taxi-tracking</artifactId>
     <version>0.1</version>
 
-    <name>GBM Callenge. Taxi Tracking. Version ${project.version}.</name>
+    <name>GBM Callenge. Taxi Tracking. Version ${project.version}</name>
     <description>
         Tracking of a taxi in real time.
     </description>
@@ -23,6 +23,16 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- DB & JPA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
         </dependency>
 
         <!-- JUnit Test -->

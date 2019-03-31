@@ -1,4 +1,4 @@
-package com.gbm.challenge;
+package com.gbm.challenge.taxitracking;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
