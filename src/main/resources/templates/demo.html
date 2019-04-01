@@ -18,10 +18,11 @@
             <ul>
                 <li><strong>Test user</strong> - Test the credentials and recovery the user's last location.</li>
                 <li><strong>Show historical</strong> - Show all user's locations, grouped by travel.</li>
-                <li><strong>Start tracking</strong> - Start a new tracking. This functionality sends several request to the web service:
+                <li><strong>Start tracking</strong> - Start a new tracking. This functionality sends several requests to the web service:
                     <ul>
                         <li><strong>new-tracking</strong> - (one request) Initialize a new tracking.</li>
                         <li><strong>set-position</strong> - (multiple requests) Send a new location every several seconds.</li>
+                        <li>In addition, this functionality communicates with other interested parties using a webhook each time that the user's location is updated.</li>
                     </ul>
                 </li>
             </ul>
