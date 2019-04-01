@@ -1,14 +1,17 @@
 package com.gbm.challenge.taxitracking.webservice;
 
-import com.gbm.challenge.taxitracking.repository.TaxiUserRepository;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * Available endpoints for web service.
@@ -20,30 +23,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class TrackingRestController {
 
     @Autowired
-    TaxiUserRepository taxiUserRepository;
+    private RestTemplate restTemplate;
+
+    @Value("${webhook.url}")
+    private String webhookUrl;
 
     /**
-     * Endpoint to root directory.
-     *
-     * @return HTTP status of the request and greetings.
-     */
-    @GetMapping("/")
-    public ResponseEntity root() {
-        log.debug("root() {}");
-
-        log.debug("Taxi users: " + taxiUserRepository.findAll());
-
-        return new ResponseEntity("Taxi tracking application", HttpStatus.OK);
-    }
-
-    /**
-     * Endpoint to update some position.
+     * Set a location and send a request to the interested parties.
      *
      * @return HTTP status of the request.
      */
-    @GetMapping("/update-location")
-    public ResponseEntity updateLocation() {
-        log.debug("updateLocation() {}");
+    @PutMapping("/set-location")
+    public ResponseEntity setLocation() {
+        log.debug("setLocation()");
+
+        sendWebhookRequest(0, 0); // Webhook request.
+
         return new ResponseEntity(HttpStatus.OK);
     }
 
@@ -77,4 +72,35 @@ public class TrackingRestController {
         return new ResponseEntity(response, HttpStatus.OK);
     }
 
+    /**
+     * Build and send a webhook request.
+     *
+     * @param lat Latitude.
+     * @param lng Longitude.
+     */
+    private void sendWebhookRequest(float lat, float lng) {
+
+        Map request = new HashMap<>();
+        request.put("USER", getUser());
+        request.put("TYPE", "New location");
+        request.put("LATITUDE", lat);
+        request.put("LONGITUDE", lng);
+
+        log.debug("Webhook URL: {}", webhookUrl);
+        log.debug("Webhook request: {}", request);
+
+        restTemplate.put(webhookUrl, request);
+    }
+
+    /**
+     * Get the current user.
+     *
+     * @return User's name who made the request.
+     */
+    private String getUser() {
+        String usr = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        log.debug("Current user: {}", usr);
+        return usr;
+    }
 }

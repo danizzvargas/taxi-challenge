@@ -10,4 +10,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  */
 public interface TaxiUserRepository extends PagingAndSortingRepository<TaxiUser, Integer> {
 
+    public TaxiUser findByPhone(String phone);
+
 }
