@@ -16,8 +16,6 @@ ALTER SEQUENCE public.id_taxi_user_seq OWNED BY public.taxi_user.id_taxi_user;
 CREATE SEQUENCE public.id_travel_seq;
 CREATE TABLE public.travel (
                 id_travel INTEGER NOT NULL DEFAULT nextval('public.id_travel_seq'),
-                start_travel TIMESTAMP NOT NULL,
-                end_travel TIMESTAMP NOT NULL,
                 id_taxi_user INTEGER NOT NULL,
                 CONSTRAINT id_travel PRIMARY KEY (id_travel)
 );
@@ -59,26 +57,20 @@ NOT DEFERRABLE;
 
 -- Some users.
 INSERT INTO taxi_user (first_name, last_name, phone, password) 
-        VALUES ('Daniel', 'Vargas', '5511223344', '$2a$11$Ds/XAHjqVj1N17dxTATL4e4/7pO85xlodjRtzjenq9OBYr5IM/TkO');
+        VALUES ('Daniel', 'Vargas', '5511223344', '$2a$11$PEAXua65nJ3WIRe5xj2p7OSgOJP8aEhDK9iYvR5zwubHRT1CB2bWe');
 INSERT INTO taxi_user (first_name, last_name, phone, password) 
-        VALUES ('Ileana', 'Juárez', '5544332211', '$2a$11$Ds/XAHjqVj1N17dxTATL4e4/7pO85xlodjRtzjenq9OBYr5IM/TkO');
+        VALUES ('Ileana', 'Juárez', '5544332211', '$2a$11$ueTKIqT56LbZ9Jl1QkB7c.iNuheAvCSmqyc5Z5hjOW7YUueJJBv6u');
 INSERT INTO taxi_user (first_name, last_name, phone, password) 
-        VALUES ('José', 'Méndez', '5512345678', '$2a$11$Ds/XAHjqVj1N17dxTATL4e4/7pO85xlodjRtzjenq9OBYr5IM/TkO');
+        VALUES ('José', 'Méndez', '5512345678', '$2a$11$ozD9EFg/RLDBg3O.KyFNLupIX9dhagF4tkHKg.6kvYmjXp3jXOVg6');
 
 
 -- Some travels.
-INSERT INTO travel (start_travel, end_travel, id_taxi_user) 
-        VALUES ('2019-03-27 14:00:00.0', '2019-03-27 14:35:00.0', 1);
-INSERT INTO travel (start_travel, end_travel, id_taxi_user) 
-        VALUES ('2019-03-27 15:00:00.0', '2019-03-27 16:05:00.0', 1);
-INSERT INTO travel (start_travel, end_travel, id_taxi_user) 
-        VALUES ('2019-03-28 21:05:00.0', '2019-03-28 22:25:00.0', 1);
-INSERT INTO travel (start_travel, end_travel, id_taxi_user) 
-        VALUES ('2019-03-27 09:08:00.0', '2019-03-27 10:01:00.0', 2);
-INSERT INTO travel (start_travel, end_travel, id_taxi_user) 
-        VALUES ('2019-03-28 14:00:00.0', '2019-03-28 14:30:00.0', 2);
-INSERT INTO travel (start_travel, end_travel, id_taxi_user) 
-        VALUES ('2019-03-28 15:15:00.0', '2019-03-28 15:45:00.0', 3);
+INSERT INTO travel (id_taxi_user)  VALUES (1);
+INSERT INTO travel (id_taxi_user)  VALUES (1);
+INSERT INTO travel (id_taxi_user)  VALUES (1);
+INSERT INTO travel (id_taxi_user)  VALUES (2);
+INSERT INTO travel (id_taxi_user)  VALUES (2);
+INSERT INTO travel (id_taxi_user)  VALUES (3);
 
 
 -- mapquestapi.com

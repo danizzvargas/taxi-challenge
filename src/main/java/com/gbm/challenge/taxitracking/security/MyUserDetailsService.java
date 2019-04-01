@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
- * Custom user management.
+ * User management. Look for the user in the database.
  *
  * @author danizz
  */

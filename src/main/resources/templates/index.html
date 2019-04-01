@@ -20,33 +20,27 @@
             <ul>
                 <li><a href="/demo">Taxi tracking application</a></li>
             </ul>
-            <label>Available users</label>
-            <ul>
-                <li>5511223344 - qwerty</li>
-                <li>5544332211 - qwerty</li>
-                <li>5512345678 - qwerty</li>
-            </ul>
             <hr/>
 
             <p class="lead">Technical details</p>
 
-            <label>Entry point</label>
-            <ul>
-                <li><strong>/login</strong> - lorem</li>
-            </ul>
-
             <label>Endpoints</label>
             <ul>
-                <li>
-                    <strong>/set-position</strong> - lorem</li>
-                <li><strong>/get-position</strong> - lorem</li>
-                <li><strong>/get-historical</strong> - lorem</li>
+                <li><strong>/get-last-position</strong> - (GET request) Get the last position registered of the user who made the request. Return JSON.</li>
+                <li><strong>/get-historical</strong> - (GET request) Get all trackings and registered locations of the user who made the request. Return JSON.</li>
+                <li><strong>/new-tracking</strong> - (GET request) Start a new tracking. Return the new travel's ID.</li>
+                <li><strong>/set-position</strong> - (PUT request) Set a new position to tracking.</li>
+            </ul>
+
+            <label>Security</label>
+            <ul>
+                <li>It uses a <strong>basic access authentication</strong> (user and a password).</li>
             </ul>
 
             <label>Webhook</label>
             <ul>
                 <li>
-                    <a href="https://webhook.site/#!/08244599-e1fa-4738-ab51-f2c2d1a31e4a/09f171b7-4971-4b48-bbf4-5a800e461683/1"
+                    <a href="https://taxitracker.requestcatcher.com/"
                        target="_blank">
                         Website to visualize the webhook requests
                     </a>

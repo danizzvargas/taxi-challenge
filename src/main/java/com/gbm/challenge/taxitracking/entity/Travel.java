@@ -1,7 +1,6 @@
 package com.gbm.challenge.taxitracking.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -15,9 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,16 +34,6 @@ public class Travel implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_travel")
     private Integer idTravel;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "start_travel")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date startTravel;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "end_travel")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date endTravel;
     @JoinColumn(name = "id_taxi_user", referencedColumnName = "id_taxi_user")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private TaxiUser idTaxiUser;
@@ -59,12 +45,6 @@ public class Travel implements Serializable {
 
     public Travel(Integer idTravel) {
         this.idTravel = idTravel;
-    }
-
-    public Travel(Integer idTravel, Date startTravel, Date endTravel) {
-        this.idTravel = idTravel;
-        this.startTravel = startTravel;
-        this.endTravel = endTravel;
     }
 
     @Override
