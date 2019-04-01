@@ -10,7 +10,7 @@
     <description>
         Tracking of a taxi in real time.
     </description>
-    <url>http://maven.apache.org</url>
+    <url>https://taxi-tracking.herokuapp.com/</url>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
